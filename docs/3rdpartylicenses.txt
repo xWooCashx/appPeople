@@ -89,9 +89,17 @@ THE SOFTWARE.
 
 @angular/material/checkbox
 
+@angular/material/menu
+
 @angular/material/table
 
 @angular/platform-browser
+MIT
+
+@ngx-translate/core
+MIT
+
+@ngx-translate/http-loader
 MIT
 
 angular-in-memory-web-api
