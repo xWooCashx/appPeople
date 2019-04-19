@@ -1,12 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { PersonService } from './person.service';
+import {PersonService} from './person.service';
 
+let httpClientSpy: { get: jasmine.Spy };
+let personService: PersonService;
 describe('PersonService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
-
+  beforeEach(() => {
+      httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+      personService = new PersonService( <any> httpClientSpy);
+    }
+  );
   it('should be created', () => {
-    const service: PersonService = TestBed.get(PersonService);
-    expect(service).toBeTruthy();
+    expect(personService).toBeTruthy();
   });
-});
+})
+;

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LanguageMenuComponent } from './language-menu.component';
+import {TranslateService} from '@ngx-translate/core';
 
 describe('LanguageMenuComponent', () => {
   let component: LanguageMenuComponent;
@@ -8,7 +9,8 @@ describe('LanguageMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LanguageMenuComponent ]
+      declarations: [ LanguageMenuComponent ],
+      providers: [TranslateService]
     })
     .compileComponents();
   }));
@@ -19,7 +21,8 @@ describe('LanguageMenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it(`should has initial language'`, () => {
+    component.ngOnInit();
+    expect(component.getLanguage()).toEqual('en');
   });
 });

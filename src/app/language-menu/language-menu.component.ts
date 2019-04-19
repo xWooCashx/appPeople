@@ -7,14 +7,16 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./language-menu.component.scss']
 })
 export class LanguageMenuComponent implements OnInit {
-
   constructor(private translate: TranslateService) {
   }
 
   ngOnInit() {
   }
 
-  setLanguage(language: string): void {
+  public setLanguage(language: string): void {
     this.translate.setDefaultLang(language);
+  }
+  public getLanguage(): string {
+    return this.translate.getDefaultLang();
   }
 }
