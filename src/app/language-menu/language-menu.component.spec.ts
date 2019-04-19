@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PeopleRowComponent } from './people-row.component';
+import { LanguageMenuComponent } from './language-menu.component';
 
-describe('PeopleRowComponent', () => {
-  let component: PeopleRowComponent;
-  let fixture: ComponentFixture<PeopleRowComponent>;
+describe('LanguageMenuComponent', () => {
+  let component: LanguageMenuComponent;
+  let fixture: ComponentFixture<LanguageMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PeopleRowComponent ]
+      declarations: [ LanguageMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PeopleRowComponent);
+    fixture = TestBed.createComponent(LanguageMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

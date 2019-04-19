@@ -1,0 +1,7 @@
+<div class="lang">
+  <button mat-raised-button [matMenuTriggerFor]="menu">{{'language' | translate}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="setLanguage('en')">{{'english' | translate}}</button>
+    <button mat-menu-item (click)="setLanguage('pl')">{{'polish' | translate}}</button>
+  </mat-menu>
+</div>

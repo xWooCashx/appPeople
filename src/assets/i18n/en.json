@@ -1,0 +1,13 @@
+{
+  "name": "Name",
+  "surname": "Surname",
+  "birth": "Date of birth",
+  "phone": "Mobile number",
+  "address": "Address ( city + street + house number",
+  "editSelected": "Edit selected",
+  "edit": "Edit",
+  "delete": "Delete",
+  "language": "Choose Language",
+  "english": "English",
+  "polish": "Polish"
+}
