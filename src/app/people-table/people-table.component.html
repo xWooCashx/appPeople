@@ -1,0 +1,61 @@
+<div>
+  <mat-table [dataSource]="dataSource$">
+    <ng-container matColumnDef="checkboxEdit">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let user; let index = index">
+        <mat-checkbox [(ngModel)]="selected[index]" ></mat-checkbox>
+      </mat-cell>
+  </ng-container>
+    <ng-container matColumnDef="id" >
+      <mat-header-cell *matHeaderCellDef > id </mat-header-cell>
+      <mat-cell *matCellDef="let user" >{{user.id}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user; let index = index" >
+        <span *ngIf="!toEdit[index]">{{user.name}}</span>
+        <input class="inputText" matInput [(ngModel)]="user.name" *ngIf="toEdit[index]"/>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+      <mat-cell *matCellDef="let user; let index = index">
+        <span *ngIf="!toEdit[index]"> {{user.surname}}</span>
+        <input class="inputText" matInput [(ngModel)]="user.surname" *ngIf="toEdit[index]"/></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="birth">
+      <mat-header-cell *matHeaderCellDef> Date of birth </mat-header-cell>
+      <mat-cell *matCellDef="let user; let index = index">
+        <span *ngIf="!toEdit[index]">{{user.birth}}</span>
+        <input  class="inputText" matInput [(ngModel)]="user.birth" *ngIf="toEdit[index]"/> </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef> Mobile Number </mat-header-cell>
+      <mat-cell *matCellDef="let user; let index = index">
+        <span *ngIf="!toEdit[index]"> {{user.phone}}</span>
+        <input class="inputText" matInput [(ngModel)]="user.phone" *ngIf="toEdit[index]"/></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+      <mat-cell *matCellDef="let user; let index = index">
+        <span *ngIf="!toEdit[index]"> {{user.address}}</span>
+        <input class="inputText" matInput [(ngModel)]="user.address" *ngIf="toEdit[index]"/> </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="buttons">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-raised-button color="primary" (click)="editSelected()">
+          <i [ngClass]="{'glyphicon':true, 'glyphicon-pencil': !editting, 'glyphicon-ok':editting }"></i>
+          Edit selected</button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let user; let index = index">
+        <button mat-raised-button color="primary" (click)="edit(index)">
+          <i [ngClass]="{'glyphicon':true, 'glyphicon-pencil': !toEdit[index], 'glyphicon-ok':toEdit[index] }" class="glyphicon glyphicon-pencil"></i>
+          Edit</button>
+        <button mat-raised-button color="warn" (click)="delete(user,index)"><i class="glyphicon glyphicon-remove"></i>Delete</button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
