@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class PersonService {
+  // Server URL
   private serviceUrl = 'api/people';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -16,16 +17,19 @@ export class PersonService {
 
   }
 
+  // Retrieves data
   public getPeople(): Observable<PersonModel[]> {
     console.log(`%c Got People`, {color: 'green'});
     return this.http.get<PersonModel[]>(this.serviceUrl);
   }
 
+  // Updates data
   public updatePerson(person: PersonModel): Observable<any> {
     console.log(`%c Updated Person ${person.id}`, {color: 'green'});
     return this.http.put(this.serviceUrl, person, this.httpOptions);
   }
 
+  // Deletes data
   public deletePerson(person: PersonModel | number): Observable<PersonModel> {
     const id = typeof person === 'number' ? person : person.id;
     const url = `${this.serviceUrl}/${id}`;

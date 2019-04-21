@@ -1,3 +1,4 @@
+// Person data model
 export interface PersonModel {
   id: number;
   name: string;
@@ -5,10 +6,10 @@ export interface PersonModel {
   birth: string;
   phone: string;
   address: string;
-    /*{
-    city: string,
-    street: string,
-    house: number
+  /*{ //MORE DETAILED ADDRESS
+  city: string,
+  street: string,
+  house: number
 };
 */
 }

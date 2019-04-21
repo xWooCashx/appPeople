@@ -1,5 +1,5 @@
-import { Component, Inject} from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {Component, Inject} from '@angular/core';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import {PersonModel} from '../../person.model';
 import {PersonService} from '../../person.service';
@@ -12,7 +12,10 @@ import {PersonService} from '../../person.service';
 export class ModalEditDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<ModalEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: PersonModel, private personService: PersonService) {
+    // Injected data
+    @Inject(MAT_DIALOG_DATA) public data: PersonModel,
+    // Before closing the popup window service sends update request with changed data
+    private personService: PersonService) {
     this.dialogRef.beforeClosed().subscribe(person => this.personService.updatePerson(person));
   }
 }

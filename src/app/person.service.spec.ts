@@ -2,7 +2,6 @@ import {fakeAsync, inject, TestBed} from '@angular/core/testing';
 
 import {PersonService} from './person.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {PersonModel} from './person.model';
 
 describe('PersonService', () => {
   beforeEach(() => {
@@ -19,8 +18,10 @@ describe('PersonService', () => {
     inject([PersonService, HttpTestingController],
       (personService: PersonService, backend: HttpTestingController) => {
         let response = null;
-        const mockData = { id: 0, name: 'name0', surname: 'surname0', birth: '12-10-1999', phone: '999333322',
-          address: 'Poznan, Dluga 5'};
+        const mockData = {
+          id: 0, name: 'name0', surname: 'surname0', birth: '12-10-1999', phone: '999333322',
+          address: 'Poznan, Dluga 5'
+        };
         personService.getPeople().subscribe(data => response = data);
         const requestWrapper = backend.expectOne({url: 'api/people'});
         requestWrapper.flush(mockData);

@@ -1,77 +1,95 @@
 <div>
-  <mat-table [dataSource]="dataSource$" >
+  <mat-table [dataSource]="dataSource$">
+    <!-- Column with checkboxes   -->
     <ng-container matColumnDef="checkboxEdit">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let user; let index = index">
         <mat-checkbox [(ngModel)]="selected[index]"></mat-checkbox>
       </mat-cell>
     </ng-container>
+    <!-- Column 'id' properties   -->
     <ng-container matColumnDef="id">
+      <!-- Column Title     -->
       <mat-header-cell *matHeaderCellDef> id</mat-header-cell>
+      <!-- Column cell -->
       <mat-cell *matCellDef="let user">{{user.id}}
       </mat-cell>
     </ng-container>
+    <!-- Column 'Name' properties   -->
     <ng-container matColumnDef="name">
+      <!--  Similar schema for every row  -->
+      <!-- Column Title     -->
       <mat-header-cell *matHeaderCellDef> {{'name' | translate}} </mat-header-cell>
+      <!-- Column cell  ( Cell content depends on toEdit array )   -->
       <mat-cell *matCellDef="let user; let index = index">
         <span *ngIf="!toEdit[index]">{{user.name}}</span>
         <mat-form-field *ngIf="toEdit[index]">
-          <input matInput [(ngModel)]="user.name" />
+          <input matInput [(ngModel)]="user.name"/>
         </mat-form-field>
       </mat-cell>
     </ng-container>
+    <!-- Column 'Surname' properties   -->
     <ng-container matColumnDef="surname">
       <mat-header-cell *matHeaderCellDef> {{'surname' | translate}} </mat-header-cell>
       <mat-cell *matCellDef="let user; let index = index">
         <span *ngIf="!toEdit[index]"> {{user.surname}}</span>
         <mat-form-field *ngIf="toEdit[index]">
-          <input  matInput [(ngModel)]="user.surname" />
+          <input matInput [(ngModel)]="user.surname"/>
         </mat-form-field>
       </mat-cell>
     </ng-container>
+    <!-- Column 'Date of birth' properties   -->
     <ng-container matColumnDef="birth">
       <mat-header-cell *matHeaderCellDef> {{'birth' | translate}} </mat-header-cell>
       <mat-cell *matCellDef="let user; let index = index">
         <span *ngIf="!toEdit[index]">{{user.birth}}</span>
         <mat-form-field *ngIf="toEdit[index]">
-          <input  matInput [(ngModel)]="user.birth" />
+          <input matInput [(ngModel)]="user.birth"/>
         </mat-form-field>
       </mat-cell>
     </ng-container>
+    <!-- Column 'Mobile phone' properties   -->
     <ng-container matColumnDef="phone">
       <mat-header-cell *matHeaderCellDef> {{'phone' | translate}} </mat-header-cell>
       <mat-cell *matCellDef="let user; let index = index">
         <span *ngIf="!toEdit[index]"> {{user.phone}}</span>
         <mat-form-field *ngIf="toEdit[index]">
-          <input  matInput [(ngModel)]="user.phone" />
+          <input matInput [(ngModel)]="user.phone"/>
         </mat-form-field>
       </mat-cell>
     </ng-container>
+    <!-- Column 'Address' properties   -->
     <ng-container matColumnDef="address">
       <mat-header-cell *matHeaderCellDef> {{'address' | translate}} </mat-header-cell>
       <mat-cell *matCellDef="let user; let index = index">
         <span *ngIf="!toEdit[index]"> {{user.address}}</span>
         <mat-form-field *ngIf="toEdit[index]">
-          <input  matInput [(ngModel)]="user.address" />
+          <input matInput [(ngModel)]="user.address"/>
         </mat-form-field>
       </mat-cell>
     </ng-container>
+    <!-- Column with buttons   -->
     <ng-container matColumnDef="buttons">
       <mat-header-cell *matHeaderCellDef>
+        <!--  Edit Selected button      -->
         <button mat-raised-button color="primary" (click)="editSelected()">
-          <i [ngClass]="{'glyphicon':true, 'glyphicon-pencil': !editting, 'glyphicon-ok':editting }"></i>
+          <i [ngClass]="{'glyphicon':true, 'glyphicon-pencil': !editing, 'glyphicon-ok':editing }"></i>
           {{'editSelected' | translate}} </button>
       </mat-header-cell>
       <mat-cell *matCellDef="let user; let index = index">
+        <!--  Edit button      -->
         <button mat-raised-button color="primary" (click)="edit(index)">
           <i [ngClass]="{'glyphicon':true, 'glyphicon-pencil': !toEdit[index], 'glyphicon-ok':toEdit[index] }"
              class="glyphicon glyphicon-pencil"></i>
           {{'edit' | translate}} </button>
+        <!--  Modal edit component      -->
         <app-modal-edit [person]="user"></app-modal-edit>
+        <!--  Delete button      -->
         <button mat-raised-button color="warn" (click)="delete(user,index)"><i class="glyphicon glyphicon-remove"></i>
           {{'delete' | translate}} </button>
       </mat-cell>
     </ng-container>
+    <!-- Columns and rows to show   -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>

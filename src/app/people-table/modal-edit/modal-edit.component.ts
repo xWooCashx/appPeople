@@ -9,10 +9,12 @@ import {ModalEditDialogComponent} from '../modal-edit-dialog/modal-edit-dialog.c
   styleUrls: ['./modal-edit.component.scss']
 })
 export class ModalEditComponent {
- @Input() person: PersonModel;
+  // Input data for popup window
+  @Input() person: PersonModel;
 
-  constructor(public dialog: MatDialog) {}
-
+  constructor(public dialog: MatDialog) {
+  }
+ // Creates window and passes input data
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalEditDialogComponent, {
       width: '250px',
