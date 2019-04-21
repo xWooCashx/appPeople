@@ -1,0 +1,27 @@
+<h1 mat-dialog-title> Edit person</h1>
+<div mat-dialog-content>
+  <p>id: {{data.id}}</p>
+  <p>{{'name' | translate}}?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <p>{{'surname' | translate}}?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.surname">
+  </mat-form-field>
+  <p>{{'birth' | translate}}?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.birth">
+  </mat-form-field>
+  <p>{{'phone' | translate}}?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.phone">
+  </mat-form-field>
+  <p>{{'address' | translate}}?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.address">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

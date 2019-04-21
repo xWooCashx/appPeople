@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'AppPeople';
 
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('pl');
+    translate.setDefaultLang('en');
   }
 
 }
