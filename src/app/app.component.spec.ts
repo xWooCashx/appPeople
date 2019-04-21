@@ -1,9 +1,22 @@
 import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {PeopleTableComponent} from './people-table/people-table.component';
 import {LanguageMenuComponent} from './language-menu/language-menu.component';
-import {MatButtonModule, MatCheckboxModule, MatInputModule, MatMenuModule, MatSelectModule, MatTableModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatInputModule,
+  MatMenuModule,
+  MatSelectModule,
+  MatTableModule
+} from '@angular/material';
+import {FormsModule} from '@angular/forms';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpLoaderFactory} from './app.module';
+import {ModalEditDialogComponent} from './people-table/modal-edit-dialog/modal-edit-dialog.component';
+import {ModalEditComponent} from './people-table/modal-edit/modal-edit.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,7 +24,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         PeopleTableComponent,
-        LanguageMenuComponent
+        LanguageMenuComponent,
+        ModalEditDialogComponent,
+        ModalEditComponent
       ],
       providers: [TranslateService],
       imports: [MatTableModule,
@@ -19,7 +34,17 @@ describe('AppComponent', () => {
         MatButtonModule,
         MatSelectModule,
         MatInputModule,
-        MatMenuModule
+        MatMenuModule,
+        MatDialogModule,
+        FormsModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        })
       ]
     }).compileComponents();
   }));

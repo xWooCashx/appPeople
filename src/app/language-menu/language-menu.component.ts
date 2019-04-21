@@ -8,6 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class LanguageMenuComponent implements OnInit {
   constructor(private translate: TranslateService) {
+    this.setLanguage('en');
   }
 
   ngOnInit() {
