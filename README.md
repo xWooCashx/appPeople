@@ -15,3 +15,6 @@ Features:
 - Modal popup window for editing row
 
 Created 4 simple test examples for PersonService, AppComponent and LanguageMenuComponent.
+
+# Run project
+ Get a copy of a project from the repository and use 'npm install' to download needed Node dependencies and run with 'ng serve' ( Angular CLI is required).
